@@ -96,6 +96,44 @@ $('#btnCall').click(() => {
         const call = peer.call(id, stream);
         call.on('stream', remoteStream => playStream('remoteStream', remoteStream));
     });
+
+
+    remoteID=id;
+    console.log('Click on User List');
+    console.log('Call to remoteID: '+id);         
+
+       //open data connect to transfer text
+    var conn = peer.connect(remoteID);
+    console.log('remoteID in line 303',remoteID)
+    conn.on('open', function() {
+      // Receive messages
+        conn.on('data', function(data) {
+        console.log('Received', data);
+        });
+      // Send messages
+      conn.send(my_peer);
+    });
+     //conn.send("cmd_start");
+
+       //keydown listener
+       document.addEventListener('keydown', function(e) {
+      console.log("Key down Event");
+      switch(e.keyCode) {
+        case 'w':
+          // some code here...
+           console.log('keydown w' + e.keyCode);
+           break;
+         case 97:
+        // some code here...
+           console.log('keydown a'+e.keyCode);
+           break;
+           default:
+            console.log('default '+e.keyCode);
+            conn.send(e.keyCode);
+         }; //end of switch
+
+       }); //end of keydown
+
 });
 
 ///
@@ -107,9 +145,15 @@ peer.on('call', call => {
         call.answer(stream);
        // playStream('localStream', stream);
         call.on('stream', remoteStream => playStream('remoteStream', remoteStream));
-    });
+  
+	 });
+
+
+
 });
 
+
+ 
 ///
 ///     Sign Up UserName for Socket.io
 ///
@@ -139,42 +183,7 @@ function playStream(idVideoTag,stream){
 
 
 $('#ulUser').on('click','li',function() {
-    const id =$(this).attr('id');
-    remoteID=id;
-    console.log('Click on User List');
-    console.log('Call to remoteID: '+id);         
-
-       //open data connect to transfer text
-    var conn = peer.connect(remoteID);
-    console.log('remoteID in line 303',remoteID)
-    conn.on('open', function() {
-      // Receive messages
-        conn.on('data', function(data) {
-        console.log('Received', data);
-        });
-      // Send messages
-      conn.send(my_peer);
-    });
-     //conn.send("cmd_start");
-
-       //keydown listener
-    window.addEventListener('keydown', function(e) {
-
-      switch(e.keyCode) {
-        case 'w':
-          // some code here...
-           console.log('keydown w' + e.keyCode);
-           break;
-         case 97:
-        // some code here...
-           console.log('keydown a'+e.keyCode);
-           break;
-           default:
-            console.log('default '+e.keyCode);
-            conn.send(e.keyCode);
-         }; //end of switch
-
-       }); //end of keydown
+    
        
         
     }); //end of click function
