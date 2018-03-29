@@ -1,7 +1,6 @@
 ///
 ///     Socket.io Connect
 ///
-
 const socket = io('https://tmlsocketio.herokuapp.com/');
 var remoteID='';
 
