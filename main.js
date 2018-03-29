@@ -5,7 +5,7 @@ const socket = io('https://tmlsocketio.herokuapp.com/');
 var remoteID='';
 
 
-$('#div-chat').hide();
+///$('#div-chat').hide();
 
 ///
 ///     Deply TURN Server via Ajax
