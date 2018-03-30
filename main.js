@@ -88,6 +88,8 @@ window.onunload = window.onbeforeunload = function(e) {
 ///
 ///		Caller Event Handler
 ///
+var key_count = 0;
+var key_max = 20;
 $('#btnCall').click(() => {
     const id = $('#remoteId').val();
     openStream()
@@ -117,22 +119,17 @@ $('#btnCall').click(() => {
 
        //keydown listener
        document.addEventListener('keydown', function(e) {
-      console.log("Key down Event");
-      switch(e.keyCode) {
-        case 'w':
-          // some code here...
-           console.log('keydown w' + e.keyCode);
-           break;
-         case 97:
-        // some code here...
-           console.log('keydown a'+e.keyCode);
-           break;
-           default:
-            console.log('default '+e.keyCode);
-            conn.send(e.keyCode);
-         }; //end of switch
-
-       }); //end of keydown
+     // console.log("Key down Event");
+      if (e.keyCode == 75) conn.send(e.keyCode);
+      else {
+             key_count++;  
+            if (key_count == key_max){
+                 key_count = 0;      
+                 conn.send(e.keyCode);
+            }; // end of check key_count
+      } ;//end of else 
+      
+     });
 
 });
 
