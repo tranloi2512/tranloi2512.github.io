@@ -26,7 +26,7 @@ function audio_handleClick(cb2) {
 ///     Deply TURN Server via Ajax
 ///
 let customConfig;
-$.ajax ({
+ $.ajax ({
              url: "https://global.xirsys.net/_turn/tranloi2512.github.io/",
              type: "PUT",
              async: false,
@@ -34,11 +34,10 @@ $.ajax ({
                "Authorization": "Basic " + btoa("tranloi2512:1504b54e-a2d9-11e7-b628-1c12c2a160ac")
              },
              success: function (res){
-              // console.log("ICE List: "+res.v.iceServers);
-               customConfig=res.v.iceServers;
-              // console.log('customConfig: '+customConfig);
+               console.log("ICE List: "+res.v.iceServers);
+               customConfig = res.v.iceServers;
              }
-        });
+         });
 
 
 ///
