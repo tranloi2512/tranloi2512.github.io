@@ -167,7 +167,6 @@ $('#btnCall').click(() => {
         break;
         
         case 75:   
-        if (check_key(e.keyCode))  
          {
             conn.send(e.keyCode); 
             console.log('STOP');
