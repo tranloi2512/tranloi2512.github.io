@@ -231,7 +231,7 @@ $('#btnCall').click(() => {
 
         default: 
         {
-          console.log('out of desired key '+data)
+          console.log('out of desired key '+e.keyCode)
         }; //end of default
       }; //emd of switch
 
