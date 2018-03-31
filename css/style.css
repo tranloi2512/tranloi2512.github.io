@@ -1,0 +1,94 @@
+body {
+  width: 800px;
+  margin: 0 auto;
+  font-family: Arial, sans-serif;
+  font-size: 12px;
+  corlor: #fff;
+}
+div.title {
+  color: #0099ff;
+  background-color: #e3efdf;
+  margin: center;
+  text-align: center;
+  width: 800px;
+  height: 60px;
+}
+div.sideleft {
+  width: 300px;
+  height: 400px;
+  float: left;
+}
+div.stream {
+  background-color: #d9ebe7;
+  width: 500px;
+  height: 350px;
+  float: right;
+
+}
+
+div.Intruction {
+  float: right;
+  width: 300px;
+  height: 150px;
+  overflow-y: scroll;
+  font-size: 12px;
+  border-left: groove;
+  border-bottom: groove;
+}
+div.UI {
+ 
+  float: right;
+  width: 300px;
+  height: 200px;
+  overflow-y: scroll;
+  font-size: 12px;
+  border-left: groove;
+  border-bottom: groove;
+}
+
+
+b{
+  color:red;
+}
+
+h4 {
+  color:blue;
+  font-size: 14px;
+}
+
+::webkit-input-placeholder {
+  font-size: 8px;
+}
+
+#btnSignUp {
+  padding: 0px 10px;
+  float: center;
+  margin-left: 35px;
+ font-size: 12px;
+
+}
+
+input [type ="text"] {
+  font-size: 12px;
+}
+
+#btnCall {
+  padding: 0px 10px;
+  float: center;
+  margin-left: 33px;
+ font-size: 12px;
+}
+
+.textbox{
+  height:8px;
+}
+
+
+hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 1em 0;
+    padding: 0;
+}
