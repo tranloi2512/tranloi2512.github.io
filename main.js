@@ -1,3 +1,4 @@
+
 ///
 ///     Socket.io Connect
 ///
@@ -9,7 +10,7 @@ var remoteID='';
 ///
 ///     Check wheather audio or video activation
 ///
-var video_enable = false;
+var video_enable = true;
 var audio_enable = false;
 function video_handleClick(cb1) {
   console.log("Video enable = " + cb1.checked);
@@ -102,8 +103,7 @@ window.onunload = window.onbeforeunload = function(e) {
 ///
 ///		Caller Event Handler
 ///
-var key_count = 0;
-var key_max = 20;
+
 $('#btnCall').click(() => {
     const id = $('#remoteId').val();
     openStream()
@@ -129,23 +129,122 @@ $('#btnCall').click(() => {
       // Send messages
       conn.send(my_peer);
     });
-     //conn.send("cmd_start");
 
-       //keydown listener
        document.addEventListener('keydown', function(e) {
-     // console.log("Key down Event");
-      if (e.keyCode == 75) conn.send(e.keyCode);
-      else {
-             key_count++;  
-            if (key_count == key_max){
-                 key_count = 0;      
-                 conn.send(e.keyCode);
-            }; // end of check key_count
-      } ;//end of else 
+
+       switch (e.keyCode) {
+        case 73:   
+        if (check_key(e.keyCode))  
+          {
+            conn.send(e.keyCode);  
+            console.log('UP'); 
+          }        
+        break; // end of case UP
+        
+        case 74:  
+        if (check_key(e.keyCode))  
+          {
+            conn.send(e.keyCode);
+            console.log('LEFT');
+          }     
+        break; // end of case LEFT
+        
+        case 188:   
+        if (check_key(e.keyCode))  
+         {
+            conn.send(e.keyCode); 
+            console.log('DOWN');
+         }    
+      
+        break; //end of case DOWN
+    
+        case 76:   
+        if (check_key(e.keyCode))  
+         {
+            conn.send(e.keyCode); 
+            console.log('RIGHT');
+         }      
+        break;
+        
+        case 75:   
+        if (check_key(e.keyCode))  
+         {
+            conn.send(e.keyCode); 
+            console.log('STOP');
+         }   
+         break;  
+
+        case 85:   
+        if (check_key(e.keyCode))  
+         {
+            conn.send(e.keyCode); 
+            console.log('UP - LEFT');
+         }  
+         break;
+
+        case 79:   
+        console.log('UP - RIGHT');
+        if (check_key(e.keyCode))  
+         {
+            conn.send(e.keyCode); 
+            console.log('UP - RIGHT');
+         } 
+        break;
+
+        case 77:   
+        if (check_key(e.keyCode))  
+         {
+            conn.send(e.keyCode); 
+            console.log('DOWN - LEFT');
+         } 
+        break;
+
+        case 190:   
+        if (check_key(e.keyCode))  
+         {
+            conn.send(e.keyCode); 
+            console.log('DOWN - RIGHT');
+         }
+        break;
+
+        default: 
+        {
+          console.log('out of desired key '+data)
+        }; //end of default
+      }; //emd of switch
+
       
      });
 
 });
+
+
+///
+/// only send 1 command after a number of same command
+///
+var old_key = '';
+var key_count=0;
+var key_max = 20; 
+function  check_key(key_code) {
+  if (key_code != old_key) 
+    {   console.log('key has been changed');
+        old_key = key_code;
+        key_count = 0;
+        return false;
+    }
+  else
+    {
+        key_count++;
+        if (key_count == key_max) 
+        { console.log('key max');
+          key_count = 0;
+          return true;
+        }
+        else return false;
+
+    }
+
+}
 
 ///
 ///		Callee Event Handler
@@ -189,14 +288,3 @@ function playStream(idVideoTag,stream){
 	video.play();
 }
 
-
-///
-///     Call-On-Click Handler
-///
-
-
-$('#ulUser').on('click','li',function() {
-    
-       
-        
-    }); //end of click function
