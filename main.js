@@ -18,7 +18,7 @@ function video_handleClick(cb1) {
 
 function audio_handleClick(cb2) {
   console.log("Audio enable = " + cb2.checked);
-  video_enable = cb2.checked;
+  audio_enable = cb2.checked;
 }
 ///$('#div-chat').hide();
 
@@ -175,7 +175,9 @@ peer.on('call', call => {
 ///		Get Media Stream
 ///
 function openStream(){
-	const config = {audio:audio_enable,video:video_enable};
+	console.log('Debug: video:'+video_enable);
+  console.log('Debug: audio'+audio_enable);
+  const config = {audio:audio_enable,video:video_enable};
 	return navigator.mediaDevices.getUserMedia(config);
 }
 
