@@ -5,6 +5,21 @@ const socket = io('https://tmlsocketio.herokuapp.com/');
 var remoteID='';
 
 
+
+///
+///     Check wheather audio or video activation
+///
+var video_enable = false;
+var audio_enable = false;
+function video_handleClick(cb1) {
+  console.log("Video enable = " + cb1.checked);
+  video_enable = cb1.checked;
+}
+
+function audio_handleClick(cb2) {
+  console.log("Audio enable = " + cb2.checked);
+  video_enable = cb2.checked;
+}
 ///$('#div-chat').hide();
 
 ///
@@ -160,7 +175,7 @@ peer.on('call', call => {
 ///		Get Media Stream
 ///
 function openStream(){
-	const config = {audio:false,video:true};
+	const config = {audio:audio_enable,video:video_enable};
 	return navigator.mediaDevices.getUserMedia(config);
 }
 
