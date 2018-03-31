@@ -207,23 +207,23 @@ $('#btnCall').click(() => {
          }
         break;
 
-        case 119: 
+        case 87: 
         
           console.log('Increase Linear Speed:');
           conn.send(e.keyCode); 
           break;
         
-        case 115:        
+        case 83:        
           console.log('Decrease Linear Speed:');
           conn.send(e.keyCode); 
           break;
 
-        case 114:         
+        case 82:         
           console.log('Increase Angular Speed:');
           conn.send(e.keyCode); 
           break;
        
-        case 102:         
+        case 70:         
           console.log('Decrease Angular Speed:');
           conn.send(e.keyCode); 
           break;
