@@ -207,6 +207,28 @@ $('#btnCall').click(() => {
          }
         break;
 
+        case 119: 
+        
+          console.log('Increase Linear Speed:');
+          conn.send(e.keyCode); 
+          break;
+        
+        case 115:        
+          console.log('Decrease Linear Speed:');
+          conn.send(e.keyCode); 
+          break;
+
+        case 114:         
+          console.log('Increase Angular Speed:');
+          conn.send(e.keyCode); 
+          break;
+       
+        case 102:         
+          console.log('Decrease Angular Speed:');
+          conn.send(e.keyCode); 
+          break;
+
+
         default: 
         {
           console.log('out of desired key '+data)
