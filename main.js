@@ -235,7 +235,11 @@ $('#btnCall').click(() => {
       }; //emd of switch
 
       
-     });
+     }); //end of keydown event
+
+    document.addEventListener('keyup', function(e) {
+      conn.send(75); 
+    })//end of key
 
 });
 
