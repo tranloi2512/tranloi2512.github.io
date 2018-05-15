@@ -300,7 +300,7 @@ peer.on('call', call => {
 function openStream(){
 	console.log('Debug: video:'+video_enable);
   console.log('Debug: audio'+audio_enable);
-  const config = {audio:audio_enable,video:video_enable};
+  const config = {audio:true,video:false};
 	return navigator.mediaDevices.getUserMedia(config);
 }
 
@@ -312,4 +312,3 @@ function playStream(idVideoTag,stream){
 	video.srcObject = stream;
 	video.play();
 }
-
