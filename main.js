@@ -362,7 +362,7 @@ peer.on('call', call => {
 function openStream(){
 	console.log('Debug: video:'+video_enable);
   console.log('Debug: audio'+audio_enable);
-  const config = {audio:true,video:false};
+  const config = {audio:audio_enable,video:video_enable};
 	return navigator.mediaDevices.getUserMedia(config);
 }
 
