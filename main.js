@@ -105,9 +105,12 @@ window.onunload = window.onbeforeunload = function(e) {
 ///
 document.getElementById("btn_UP").onmousedown= function() {
   console.log("MOVE UP");
+  document.getElementById("label_test").innerHTML="MOVE UP";
 };
 document.getElementById("btn_UP").onmouseup= function() {
   console.log("STOP");
+  document.getElementById("label_test").innerHTML="STOP";
+
 };
 
 
