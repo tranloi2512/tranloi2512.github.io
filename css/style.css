@@ -79,6 +79,52 @@ input [type ="text"] {
  font-size: 12px;
 }
 
+#btnUP {
+  padding-top: 25px;
+  padding-left: 26px;
+  padding-right: 30px;
+  padding-bottom: 25px; 
+  float: center;
+  margin-left: 86px;
+ font-size: 12px;
+}
+
+#btnDOWN {
+  padding-top: 20px;
+  padding-left: 20px;
+  padding-right: 15px;
+  padding-bottom: 20px;
+  float: center;
+  margin-left: 87px;
+ font-size: 12px;
+}
+
+#btnLEFT {
+  padding-top: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 20px; 
+  float: center;
+  margin-left: 10px;
+ font-size: 12px;
+}
+
+#btnRIGHT {
+  padding: 20px 20px 20px 20px;
+  float: center;
+  margin-left: 0px;
+ font-size: 12px;
+}
+
+#btnSTOP {
+  padding: 20px 20px 20px 20px;
+  float: center;
+  margin-left: 0px;
+ font-size: 12px;
+}
+
+
+
 .textbox{
   height:8px;
 }

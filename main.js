@@ -1,4 +1,4 @@
-
+$('#div_Control').hide();
 ///
 ///     Socket.io Connect
 ///
@@ -21,7 +21,7 @@ function audio_handleClick(cb2) {
   console.log("Audio enable = " + cb2.checked);
   audio_enable = cb2.checked;
 }
-///$('#div-chat').hide();
+
 
 ///
 ///     Deply TURN Server via Ajax
@@ -100,21 +100,6 @@ window.onunload = window.onbeforeunload = function(e) {
 };
 
 
-///
-/// Test Control By Button
-///
-/*document.getElementById("btn_UP").onmousedown= function() {
-  console.log("MOVE UP");
-  document.getElementById("label_test").innerHTML="MOVE UP";
-};*/
-document.getElementById("btn_UP").onmouseup= function() {
-  console.log("STOP");
-  document.getElementById("label_test").innerHTML="STOP";
-};
-document.getElementById("btn_UP").onclick= function() {
-  console.log("STOP");
-  document.getElementById("label_test").innerHTML="Button click MOVE Up";
-};
 
 
 
@@ -148,10 +133,43 @@ $('#btnCall').click(() => {
       conn.send(my_peer);
     });
 
-       
+          //Button MOVE UP event
+          document.getElementById("btnUP").onclick= function() 
+          {
+            console.log("MOVE UP");
+            document.getElementById("label_test").innerHTML="MOVE UP";
+            conn.send(73);
+          };
+        //Button LEFT event
+          document.getElementById("btnLEFT").onclick= function()
+           {
+              console.log("MOVE LEFT");
+              document.getElementById("label_test").innerHTML="MOVE LEFT";
+              conn.send(74);
+            };
+        //Button RIGHT event
+          document.getElementById("btnRIGHT").onclick= function() 
+          {
+            console.log("MOVE RIGHT");
+            document.getElementById("label_test").innerHTML="MOVE RIGHT";
+            conn.send(76);
+          };
+        //Button DOWN event
+          document.getElementById("btnDOWN").onclick= function() 
+          {
+            console.log("MOVE DOWN");
+            document.getElementById("label_test").innerHTML="MOVE DOWN";
+            conn.send(188);
+          };
+        //Button STOP event
+        document.getElementById("btnSTOP").onclick= function()
+         {
+          console.log("STOP");
+          document.getElementById("label_test").innerHTML="STOP";
+          conn.send(75);
+        };
 
        document.addEventListener('keydown', function(e) {
-
        switch (e.keyCode) {
         case 73:   
         if (check_key(e.keyCode))  
@@ -260,9 +278,33 @@ $('#btnCall').click(() => {
     document.addEventListener('keyup', function(e) {
       conn.send(75); 
     })//end of key
+  
+  //HIDE UI div for larger Control UI
+  toggle_div();
+
 
 });
 
+///
+/// Function to HIDE and SHOW UI div
+///
+function toggle_div() {
+    var x = document.getElementById("div_UI");
+    if (x.style.display === "none") {
+        x.style.display = "block";
+    } else {
+        x.style.display = "none";
+    }
+
+    var x = document.getElementById("div_Control");
+    if (x.style.display === "none") {
+        x.style.display = "block";
+    } else {
+        x.style.display = "none";
+    }
+    return 1;
+    return 1;
+}
 
 ///
 /// only send 1 command after a number of same command

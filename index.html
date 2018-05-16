@@ -20,7 +20,7 @@
 
 		<div class = "sideleft">   		
     
-  			<div class = "UI"> 
+  			<div id="div_UI" class = "UI"> 
     			<h4> UI Control </h4> 
     			<p> Robot ID: </p> <ul id="ulUser"> </ul>
     			<input type="text" id="txtUsername" placeholder=" Enter your username" class="text_box" >
@@ -35,12 +35,15 @@
           		<button id="btnCall">Connect</button>
   			</div>
 
-        <div class = "Intruction">
+        <div id = "div_Control" class = "Control">
             <h4> Control </h4>
-            <button id=btn_UP type="button" >UP</button>
-            <button id=btn_DOWN type="button" >DOWN</button>
-            <button id=btn_LEFT type="button" >LEFT</button>
-            <button id=btn_RIGHT type="button" >RIGHT</button>
+            <button id=btnUP type="button" >UP</button>
+            <br>
+            <button id=btnLEFT type="button" >LEFT</button>
+            <button id=btnSTOP type="button" >STOP</button>
+            <button id=btnRIGHT type="button" >RIGHT</button>
+            <br>
+            <button id=btnDOWN type="button" >DOWN</button>
             <br>
             <h1 id = label_test>Test</h1>
             </hr>
