@@ -101,6 +101,17 @@ window.onunload = window.onbeforeunload = function(e) {
 
 
 ///
+/// Test Control By Button
+///
+document.getElementById("btn_UP").onmousedown= function() {
+  console.log("MOVE UP");
+};
+document.getElementById("btn_UP").onmouseup= function() {
+  console.log("STOP");
+};
+
+
+///
 ///		Caller Event Handler
 ///
 
@@ -129,6 +140,8 @@ $('#btnCall').click(() => {
       // Send messages
       conn.send(my_peer);
     });
+
+       
 
        document.addEventListener('keydown', function(e) {
 
