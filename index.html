@@ -45,14 +45,36 @@
             <br>
             <button id=btnDOWN type="button" >DOWN</button>
             <br>
-            <h1 id = label_test>Test</h1>
-            </hr>
+            <br>
+            <button id="button" onclick="toggleStartStop()">
+              <img alt="Static" id="bt_img" src="mic_static.gif"> 
+            </button>       
+           <div id="div_language">
+             <select id="select_language" onchange="updateCountry()">
+               <option value="English">English</option>
+               <option value="Việt Nam">Việt Nam</option>
+             </select>
+           </div>
+           <br>
+           <br>
+           <br>
+           <div id="results">
+             <span id="final_span" class="final"></span>
+             <span id="interim_span" class="interim"></span>
+             <p>
+           </div>
         </div>
+       
+     
+   
+  
+     
+    
 
 		</div>
 		<div class = stream> 
 			<video id="remoteStream" width="500" controls></video>
-		</div>
+		
    </body>
     <script src="main.js"></script>
 </html>
