@@ -4,13 +4,7 @@ $('#div_Control').hide();
 ///
 const socket = io('https://tmlsocketio.herokuapp.com/');
 var remoteID='';
-var recognizing;
-var final_transcript = '';
-var imshow_transcript = '';
-var recognition = new webkitSpeechRecognition();
-recognition.continuous = true;
-recognition.lang = 'en-PH';
-recognition.interimResults = true;
+
 
 
 ///
@@ -113,8 +107,11 @@ window.onunload = window.onbeforeunload = function(e) {
 ///		Caller Event Handler
 ///
 
-$('#btnCall').click(() => {
-    const id = $('#remoteId').val();
+//$('#btnCall').click(() => {
+  $('#ulUser').on('click', 'li', function() {
+    //const id = $('#remoteId').val();
+    const id = $(this).attr('id');
+    console.log('KHOA PHAM connect to id: '+id);
     openStream()
     .then(stream => {
        // playStream('localStream', stream);
@@ -143,30 +140,35 @@ $('#btnCall').click(() => {
           document.getElementById("btnUP").onclick= function() 
           {
             console.log("MOVE UP");
+            document.getElementById("label_test").innerHTML="MOVE UP";
             conn.send(73);
           };
         //Button LEFT event
           document.getElementById("btnLEFT").onclick= function()
            {
               console.log("MOVE LEFT");
+              document.getElementById("label_test").innerHTML="MOVE LEFT";
               conn.send(74);
             };
         //Button RIGHT event
           document.getElementById("btnRIGHT").onclick= function() 
           {
             console.log("MOVE RIGHT");
+            document.getElementById("label_test").innerHTML="MOVE RIGHT";
             conn.send(76);
           };
         //Button DOWN event
           document.getElementById("btnDOWN").onclick= function() 
           {
             console.log("MOVE DOWN");
+            document.getElementById("label_test").innerHTML="MOVE DOWN";
             conn.send(188);
           };
         //Button STOP event
         document.getElementById("btnSTOP").onclick= function()
          {
           console.log("STOP");
+          document.getElementById("label_test").innerHTML="STOP";
           conn.send(75);
         };
 
@@ -280,55 +282,9 @@ $('#btnCall').click(() => {
       conn.send(75); 
     })//end of key
   
-  	//HIDE UI div for larger Control UI
-  	toggle_div();
+  //HIDE UI div for larger Control UI
+  toggle_div();
 
-	// speech recogintion
-	reset();
-	recognition.onend = reset;
-	recognition.onresult = function (event) {
-	var interim_transcript = '';
-	for (var i = event.resultIndex; i < event.results.length; ++i) {
-	if (event.results[i].isFinal) {
-	  final_transcript += event.results[i][0].transcript;
-	}
-	else {
-	  interim_transcript += event.results[i][0].transcript;
-	}
-	}
-	final_transcript = final_transcript.toLowerCase(final_transcript);
-	console.log("%s\r\n", final_transcript);
-	if(final_transcript == "turn right" || final_transcript == " turn right" || final_transcript == "rẽ trái" || final_transcript == " rẽ trái")
-	{
-		conn.send(76);
-		console.log("RIGHT");
-	}
-	else if(final_transcript == "turn left" || final_transcript == " turn left" || final_transcript == "rẽ phải" || final_transcript == " rẽ phải")
-	{
-		conn.send(74);
-		console.log("LEFT");
-	}
-	else if(final_transcript == "forward" || final_transcript == " forward" || final_transcript == "đi tới" || final_transcript == " đi tới")
-	{
-		conn.send(73);
-		console.log("FORWARD");
-	}
-	else if(final_transcript == "backward" || final_transcript == " backward" || final_transcript == "lùi lại" || final_transcript == " lùi lại")
-	{
-		conn.send(188);
-		console.log("BACKWARD");
-	}
-	else if(final_transcript == "stop" || final_transcript == " stop" || final_transcript == "dừng lại" || final_transcript == " dừng lại")
-	{
-		conn.send(75);
-		console.log("LEFT");
-	}
-	imshow_transcript = final_transcript;
-	final_transcript = '';
-	imshow_transcript = capitalize(imshow_transcript);
-	final_span.innerHTML = linebreak(imshow_transcript);
-	interim_span.innerHTML = linebreak(interim_transcript);
-}
 
 });
 
@@ -351,44 +307,6 @@ function toggle_div() {
     }
     return 1;
     return 1;
-}
-
-
-function updateCountry() {
-	var x = document.getElementById("select_language").value;
-	recognition.stop();
-	reset();
-	if(x == "English") {
-		recognition.lang = 'en-PH';
-	}
-	else if(x == "Việt Nam") {
-		recognition.lang = 'vi-VN';
-	}
-}
-
-function reset() {
-  recognizing = false;
-  bt_img.src = "mic_static.gif";
-}
-
-var two_line = /\n\n/g;
-var one_line = /\n/g;
-function linebreak(s) {
-  return s.replace(two_line, '<p></p>').replace(one_line, '<br>');
-}
-var first_char = /\S/;
-function capitalize(s) {
-  return s.replace(first_char, function(m) { return m.toUpperCase(); });
-}
-function toggleStartStop() {
-  if (recognizing) {
-    recognition.stop();
-    reset();
-  } else {
-    recognition.start();
-    bt_img.src = "mic_dinamic.gif";
-    recognizing = true;
-  }
 }
 
 ///
