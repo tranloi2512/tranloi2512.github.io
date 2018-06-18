@@ -100,17 +100,17 @@ window.onunload = window.onbeforeunload = function(e) {
 };
 
 
-
-
-
+var id;
+$('#ulUser').on('click', 'li', function() {
+    id = $(this).attr('id');
+    console.log('KHOA PHAM connect to oid: '+id);
+    document.getElementById("remoteId").value = id;
+});
 ///
 ///		Caller Event Handler
 ///
 
-//$('#btnCall').click(() => {
-  $('#ulUser').on('click', 'li', function() {
-    //const id = $('#remoteId').val();
-    const id = $(this).attr('id');
+$('#btnCall').click(() => {
     console.log('KHOA PHAM connect to id: '+id);
     openStream()
     .then(stream => {
