@@ -146,35 +146,30 @@ window.onunload = window.onbeforeunload = function(e) {
           document.getElementById("btnUP").onclick= function() 
           {
             console.log("MOVE UP");
-            document.getElementById("label_test").innerHTML="MOVE UP";
             conn.send(73);
           };
         //Button LEFT event
           document.getElementById("btnLEFT").onclick= function()
            {
               console.log("MOVE LEFT");
-              document.getElementById("label_test").innerHTML="MOVE LEFT";
               conn.send(74);
             };
         //Button RIGHT event
           document.getElementById("btnRIGHT").onclick= function() 
           {
             console.log("MOVE RIGHT");
-            document.getElementById("label_test").innerHTML="MOVE RIGHT";
             conn.send(76);
           };
         //Button DOWN event
           document.getElementById("btnDOWN").onclick= function() 
           {
             console.log("MOVE DOWN");
-            document.getElementById("label_test").innerHTML="MOVE DOWN";
             conn.send(188);
           };
         //Button STOP event
         document.getElementById("btnSTOP").onclick= function()
          {
           console.log("STOP");
-          document.getElementById("label_test").innerHTML="STOP";
           conn.send(75);
         };
 
